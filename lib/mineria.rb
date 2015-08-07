@@ -3,6 +3,8 @@ require "mineria/tree"
 require "mineria/node"
 require "mineria/leaf"
 require "mineria/branch"
+require "mineria/row"
+require "mineria/dataset"
 
 module Mineria
 
