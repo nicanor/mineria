@@ -8,6 +8,7 @@ require "mineria/dataset"
 require "mineria/entropy_calculator"
 require "mineria/partitioner"
 require "mineria/arff_file"
+require "mineria/data_loader"
 
 module Mineria
 
