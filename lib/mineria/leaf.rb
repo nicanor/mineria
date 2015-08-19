@@ -8,5 +8,9 @@ module Mineria
     def is_leaf?
       true
     end
+
+    def ==(other_leaf)
+      @klass == other_leaf.klass
+    end
   end
 end

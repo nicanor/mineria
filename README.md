@@ -1,2 +1,3 @@
-# mineria
-Trabajo final para la materia de Minería de Datos
+# Mineria
+
+Trabajo final para la materia de Minería de Datos.

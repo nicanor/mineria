@@ -19,22 +19,25 @@ module Mineria
     end
 
     def one_klass?
-      data.uniq.length == 1
+      klasses.uniq.length == 1
     end
 
-    def partitions(attribute_name)
-      parts = {}
-      conditions(attribute_name).each do |condition|
-        parts[condition] = data.select{|row| row[attribute_name] == condition}
+    def part
+      if one_klass?
+        Leaf.new(klasses.first)
+      else
+        calculator  = EntropyCalculator.new(self)
+        partitioner = Partitioner.new(self)
+        attribute_name = calculator.max_entropy
+        partitions = partitioner.call(attribute_name)
+        new_attributes = @attributes.tap { |hs| hs.delete(attribute_name) }
+        branches = partitions.map do |condition_name, rows|
+          new_dataset = Dataset.new(rows, new_attributes)
+          Branch.new(condition_name, new_dataset.part)
+        end
+        Node.new(attribute_name, branches)
       end
-      return parts
     end
 
-    def entropy(attribute_name)
-      1 #partitions(attribute_name)
-      #partitions(attribute_name).map |key, rows|
-      #  rows.
-      #end
-    end
   end
 end

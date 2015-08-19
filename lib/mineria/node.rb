@@ -1,8 +1,8 @@
 module Mineria
   class Node
-    attr_reader :partition, :branches
-    def initialize(partition, branches)
-      @partition = partition
+    attr_reader :attribute_name, :branches
+    def initialize(attribute_name, branches)
+      @attribute_name = attribute_name
       @branches = branches
     end
 
